@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "./components/Nav";
 
 const App = () => {
   const card = {
@@ -8,7 +9,11 @@ const App = () => {
     padding: "20px 0px",
     color: "#1f778d",
   };
-  return <div style={card}>Child: React Component</div>;
+  return (
+    <div>
+      <div style={card}>Child: React Component</div>;<Nav></Nav>
+    </div>
+  );
 };
 
 export default App;

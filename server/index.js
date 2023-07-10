@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const Note = require("./models/note");
+const Animal = require("./models/animal");
 
 require("dotenv").config();
 
@@ -26,16 +27,28 @@ const typeDefs = `
     title: String!,
     content: String!
   }
+
+  type Animal {
+    name: String!,
+    legs: Int!,
+    color: [String!]
+  }
   
   type Query {
-    allNotes: [Note!]!
+    allNotes: [Note!]!,
+    allAnimals: [Animal!]!
   }
 
   type Mutation {
     addNote(
       title: String!
       content: String!
-    ): Note
+    ): Note,
+    addAnimal(
+      name: String!
+      legs: Int!
+      color: [String!]!
+    ): Animal
   }
 `;
 
@@ -44,11 +57,18 @@ const resolvers = {
     allNotes: async (root, args) => {
       return Note.find({});
     },
+    allAnimals: async (root, args) => {
+      return Animal.find({});
+    },
   },
   Mutation: {
     addNote: async (root, args) => {
       const note = new Note({ ...args });
       return note.save();
+    },
+    addAnimal: async (root, args) => {
+      const animal = new Animal({ ...args });
+      return animal.save();
     },
   },
 };

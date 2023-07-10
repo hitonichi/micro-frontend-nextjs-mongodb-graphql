@@ -10,6 +10,22 @@ The shell receives exposed components from its children, and it can be a React c
 
 ## Getting Started
 
+### Install & Setup MongoDB Compass
+
+Apart from the sources, this application uses MongoDB Compass together with to reduce the heavy tasks from Database Management.
+
+MongoDB Compass can be installed step-by-step via https://www.mongodb.com/docs/compass/master/install/.
+
+After installation, create a new database instance in the local application, and modify the `URI` configuration in `server/.env`:
+
+```
+MONGODB_URI = mongodb://localhost:[PORT_NUMBER]/[DATABASE_NAME]
+```
+
+where `[PORT_NUMBER]` and `[DATABASE_NAME]` from the designated setup.
+
+### Start the applications
+
 First, run the development server by starting all children and the shell. Currently all procedures has to be done manually:
 
 In `micro-frontend-main`:
